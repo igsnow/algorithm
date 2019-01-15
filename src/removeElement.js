@@ -4,6 +4,7 @@
  * @return {number}
  * [3, 2, 2, 3] 3 => [2, 2]
  * 
+ * 此算法leetcode不能通过！！！！
  */
 var removeElement = function(nums, val) {
   let str = String(nums);
