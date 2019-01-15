@@ -3,22 +3,17 @@
  * @param {number} val
  * @return {number}
  * [3, 2, 2, 3] 3 => [2, 2]
- * 
- * 此算法leetcode不能通过！！！！
+ * [0, 1, 2, 2, 3, 0, 4, 2] 2 => [0, 1, 3, 0, 4]
  */
 var removeElement = function(nums, val) {
-  let str = String(nums);
-  while(str.indexOf(val) > -1 || str.indexOf(',') > -1){
-      str = str.replace(val, '');
-      str = str.replace(',', '');
+  for(let i = 0;i < nums.length;i++){
+    if(nums[i] == val){
+      nums.splice(i, 1)
+      removeElement(nums, val)
+    }
   }
-  let arr = str.split('');
-  let newArr = [];
-  arr.forEach(item => {
-    newArr.push(Number(item));
-  });
-  return newArr;
+  return nums
 };
 
-let res = removeElement([3,2,2,3,5,3], 3);
+let res = removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2)
 console.log(res)
