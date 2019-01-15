@@ -1,13 +1,19 @@
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ * [3, 2, 2, 3] 3 => [2, 2]
+ * 
+ */
 var removeElement = function(nums, val) {
   let str = String(nums);
   while(str.indexOf(val) > -1 || str.indexOf(',') > -1){
       str = str.replace(val, '');
-      str = str.replace(',', '');    
+      str = str.replace(',', '');
   }
   let arr = str.split('');
   let newArr = [];
   arr.forEach(item => {
-    item = Number(item)
     newArr.push(Number(item));
   });
   return newArr;
