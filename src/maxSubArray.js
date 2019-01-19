@@ -4,20 +4,20 @@
  * [-2,1,-3,4,-1,2,1,-5,4] => [4,-1,2,1] 6
  */
 var maxSubArray = function(nums) {
-  let max = nums[0]
-  let sum = nums[0]
+  if(nums.length == 1) return nums[0]
+  // 假设第一个
+  let res = nums[0]
+  let sum = 0
   for(let i = 0;i < nums.length;i++){
-    if(max > 0){
-      max += nums[i]
+    if(sum > 0){
+      sum += nums[i]
     }else{
-      max = nums[i]
+      sum = nums[i]
     }
-    if(max > sum){
-      sum = max
-    }
+    res = Math.max(res, sum)
   }
-  return sum
+  return res
 };
 
-let res = maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
+let res = maxSubArray([1, 2])
 console.log(res)
