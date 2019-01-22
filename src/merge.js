@@ -15,7 +15,7 @@ var merge = function (nums1, m, nums2, n) {
     nums1[i + j + 1] = nums2[j]
     j--
   }
-  return nums1
+  return nums
 };
 
 let nums1 = [1, 2, 3, 0, 0, 0], m = 3, nums2 = [2, 5, 6], n = 3
