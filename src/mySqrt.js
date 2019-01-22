@@ -16,3 +16,9 @@ var mySqrt = function (x) {
 
 let res = mySqrt(100)
 console.log(res)
+
+let str = 'www.baidu.com'
+console.log(encodeURIComponent(str))
+
+let json = '{"a" : 1, "b" : 2}'
+console.log(JSON.parse(json))
