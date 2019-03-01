@@ -1,24 +1,23 @@
 /**
  * @title 最接近的三数之和
- * @tips  先排序，使用双指正
+ * @tips  先排序，使用双指针
  */
 var threeSumClosest = function (nums, target) {
-    nums = nums.sort((a, b) => a - b)
+    nums.sort((a, b) => a - b)
     let closestNum = nums[0] + nums[1] + nums[2]
     let i = 0
-    while (i < nums.length) {
-        let one = nums[i]
-        let start = i + 1
-        let end = nums.length - 1
-        while (start < end) {
-            let sums = one + nums[start] + nums[end]
+    while (i < nums.length - 2) {
+        let j = i + 1
+        let k = nums.length - 1
+        while (j < k) {
+            let sums = nums[i] + nums[j] + nums[k]
             if (Math.abs(sums - target) < Math.abs(closestNum - target)) {
                 closestNum = sums
             }
             if (sums < target) {
-                start++
+                j++
             } else if (sums > target) {
-                end--
+                k--
             } else {
                 return target
             }
