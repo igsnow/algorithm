@@ -1,38 +1,42 @@
+/**
+ * @title 三数之和
+ * @tags  数组、双指针
+ */
 let threeSum = function (nums) {
-    nums = nums.sort((a, b) => a - b)
-    let ret = []
+    if (nums.length < 3) return []
+    nums.sort((a, b) => a - b)
+    let arr = []
     let i = 0
-    while (i < nums.length) {
-        let one = nums[i]
-        let start = i + 1
-        let end = nums.length - 1
-        while (start < end) {
-            let sum = one + nums[start] + nums[end]
-            if (sum === 0) {
-                ret.push([one, nums[start], nums[end]])
-                start++
-                end--
-                // 跳过start重复值
-                while (start < end && nums[start] === nums[start - 1]) {
-                    start++
+    while (i < nums.length - 2) {
+        let j = i + 1
+        let k = nums.length - 1
+        while (j < k) {
+            let sum = nums[i] + nums[j] + nums[k]
+            if (sum == 0) {
+                arr.push([nums[i], nums[j], nums[k]])
+                j++
+                k--
+                // 跳过j重复值
+                while (j < k && nums[j - 1] === nums[j]) {
+                    j++
                 }
-                // 跳过end重复值
-                while (start < end && nums[end] === nums[end + 1]) {
-                    end--
+                // 跳过k重复值
+                while (j < k && nums[k] === nums[k + 1]) {
+                    k--
                 }
             } else if (sum > 0) {
-                end--
+                k--
             } else {
-                start++
+                j++
             }
         }
         i++
-        // 跳过one重复值
-        while (i < nums.length && nums[i] === nums[i - 1]) {
+        // 跳过i重复值
+        while (i < nums.length - 2 && nums[i - 1] === nums[i]) {
             i++
         }
     }
-    return ret
+    return arr
 }
 
 let res = threeSum([-1, 0, 1, 2, -1, -4])
